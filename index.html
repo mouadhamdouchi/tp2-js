@@ -1,0 +1,193 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>TP 2 — JavaScript</title>
+    <link rel="stylesheet" href="style.css" />
+    <script src="script.js" defer></script>
+  </head>
+  <body>
+    <header>
+      <h1>TP 2 — JavaScript</h1>
+      <p>Exercices de base en HTML, CSS et JavaScript</p>
+      <button id="themeToggle" type="button" aria-label="Activer le thème sombre" aria-pressed="false">Changer le thème</button>
+    </header>
+
+    <nav aria-label="Sommaire des exercices">
+      <a href="#exercice-1">1–5 Fondamentaux</a>
+      <a href="#exercice-6">6–10 Interactions</a>
+      <a href="#exercice-11">11–15 Autres exercices</a>
+    </nav>
+
+    <main>
+      <section class="exercise" id="exercice-1">
+        <h2>1. Changer le style au clic</h2>
+        <div class="demo-box" id="colorDemo">Cette zone change de couleur.</div>
+        <button id="colorButton" type="button">Changer la couleur</button>
+      </section>
+
+      <section class="exercise" id="exercice-2">
+        <h2>2. Afficher ou masquer un texte</h2>
+        <p id="toggleText">Ce paragraphe peut être masqué et affiché avec le bouton.</p>
+        <button id="toggleTextButton" type="button" aria-expanded="true">Masquer le texte</button>
+      </section>
+
+      <section class="exercise" id="exercice-3">
+        <h2>3. Valider un formulaire</h2>
+        <form id="contactForm" novalidate>
+          <p><label for="nameInput">Nom</label><br /><input id="nameInput" name="name" type="text" placeholder="Nom" /></p>
+          <p><label for="emailInput">E-mail</label><br /><input id="emailInput" name="email" type="email" placeholder="nom@exemple.com" /></p>
+          <button type="submit">Soumettre</button>
+          <p id="formMessage" aria-live="polite"></p>
+        </form>
+      </section>
+
+      <section class="exercise" id="exercice-4">
+        <h2>4. Calculatrice</h2>
+        <p>Entre deux nombres, puis choisis une opération.</p>
+        <label for="firstNumber">Premier nombre</label>
+        <input id="firstNumber" type="number" placeholder="12" />
+        <label for="secondNumber">Deuxième nombre</label>
+        <input id="secondNumber" type="number" placeholder="4" />
+        <div class="operation-buttons" aria-label="Opérations">
+          <button type="button" data-operation="add">+</button>
+          <button type="button" data-operation="subtract">−</button>
+          <button type="button" data-operation="multiply">×</button>
+          <button type="button" data-operation="divide">÷</button>
+        </div>
+        <p id="quickResult" aria-live="polite">Le résultat s’affichera ici.</p>
+
+        <h3>Calculatrice</h3>
+        <div class="calculator">
+          <div class="calculator-screen"><span id="calcExpression"></span><output id="calcDisplay" aria-live="polite">0</output></div>
+          <div class="calculator-keys">
+            <button type="button" data-key="clear">C</button><button type="button" data-key="backspace" aria-label="Effacer le dernier chiffre">⌫</button><button type="button" data-key="divide">÷</button><button type="button" data-key="multiply">×</button>
+            <button type="button" data-digit="7">7</button><button type="button" data-digit="8">8</button><button type="button" data-digit="9">9</button><button type="button" data-key="subtract">−</button>
+            <button type="button" data-digit="4">4</button><button type="button" data-digit="5">5</button><button type="button" data-digit="6">6</button><button type="button" data-key="add">+</button>
+            <button type="button" data-digit="1">1</button><button type="button" data-digit="2">2</button><button type="button" data-digit="3">3</button><button type="button" data-key="equals">=</button>
+            <button class="zero-key" type="button" data-digit="0">0</button><button type="button" data-key="decimal">.</button>
+          </div>
+        </div>
+      </section>
+
+      <section class="exercise" id="exercice-5">
+        <h2>5. Carrousel d’images</h2>
+        <figure>
+          <img id="carouselImage" src="assets/images/lake.jpg" alt="Lac entouré de montagnes" />
+          <figcaption id="carouselTitle">Au bord du lac</figcaption>
+        </figure>
+        <p id="carouselCounter">01 / 04</p>
+        <div id="carouselDots" aria-label="Choisir une image"></div>
+        <button id="previousPhoto" type="button">Précédent</button>
+        <button id="nextPhoto" type="button">Suivant</button>
+      </section>
+
+      <section class="exercise" id="exercice-6">
+        <h2>6. Menu déroulant</h2>
+        <button id="dropdownTrigger" type="button" aria-expanded="false" aria-controls="dropdownMenu">Ouvrir le menu</button>
+        <ul id="dropdownMenu" hidden>
+          <li><a href="#exercice-1">Exercices 1 à 5</a></li>
+          <li><a href="#exercice-6">Exercices 6 à 10</a></li>
+          <li><a href="#exercice-11">Exercices 11 à 15</a></li>
+        </ul>
+      </section>
+
+      <section class="exercise" id="exercice-7">
+        <h2>7. Chronomètre</h2>
+        <p>Temps écoulé : <output id="elapsedTime">00:00</output></p>
+      </section>
+
+      <section class="exercise" id="exercice-8">
+        <h2>8. Événement de souris</h2>
+        <div class="demo-box hover-zone" id="hoverZone" tabindex="0">
+          <strong id="hoverText">Passe la souris sur cette zone.</strong>
+        </div>
+      </section>
+
+      <section class="exercise" id="exercice-9">
+        <h2>9. Liste de tâches</h2>
+        <form id="todoForm">
+          <label class="screen-reader-only" for="todoInput">Nouvelle tâche</label>
+          <input id="todoInput" type="text" placeholder="Écrire une tâche" maxlength="80" />
+          <button type="submit">Ajouter</button>
+        </form>
+        <ul id="todoList" aria-live="polite"></ul>
+        <p><span id="todoCount">0 tâche</span> <button id="clearDone" type="button">Effacer les tâches faites</button></p>
+      </section>
+
+      <section class="exercise" id="exercice-10">
+        <h2>10. Fenêtre de notification</h2>
+        <button id="openModal" type="button">Ouvrir</button>
+      </section>
+
+      <section class="exercise" id="exercice-11">
+        <h2>11. Filtrer des éléments</h2>
+        <label for="filterInput">Rechercher une destination</label>
+        <input id="filterInput" type="search" placeholder="Rechercher…" />
+        <p>Résultats : <span id="filterTotal">04</span></p>
+        <div class="destination-grid" id="destinationGrid">
+          <article class="destination-item" data-search="lac montagne nature canada bleu">
+            <img src="assets/images/lake.jpg" alt="Lac de montagne" />
+            <p>Canada — Le grand lac</p>
+          </article>
+          <article class="destination-item" data-search="océan plage mer sable tropical">
+            <img src="assets/images/ocean.jpg" alt="Plage au bord de l’océan" />
+            <p>Océan — La plage</p>
+          </article>
+          <article class="destination-item" data-search="montagne forêt lac vert alpes">
+            <img src="assets/images/mountain.jpg" alt="Montagnes et forêt" />
+            <p>Alpes — Le sentier</p>
+          </article>
+          <article class="destination-item" data-search="côte mer vagues bleu paysage">
+            <img src="assets/images/coast.jpg" alt="Vagues sur la côte" />
+            <p>Côte — La mer bleue</p>
+          </article>
+        </div>
+        <p id="filterEmpty" hidden>Aucun résultat.</p>
+      </section>
+
+      <section class="exercise" id="exercice-12">
+        <h2>12. Adapter la page à la largeur de l’écran</h2>
+        <p>Largeur actuelle : <output id="viewportWidth">— px</output></p>
+        <p id="layoutMessage">Format large détecté</p>
+        <p id="responsiveDetail">La page s’adapte à la largeur de la fenêtre.</p>
+      </section>
+
+      <section class="exercise" id="exercice-13">
+        <h2>13. Barre de progression</h2>
+        <div id="progressTrack" class="progress-track" role="progressbar" aria-label="Progression" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"><span id="progressBar"></span></div>
+        <p>Progression : <output id="progressValue">0%</output></p>
+        <button id="progressButton" type="button">Avancer de 10 %</button>
+      </section>
+
+      <section class="exercise" id="exercice-14">
+        <h2>14. Glisser-déposer</h2>
+        <p>Déplace les formes dans la zone de dépôt. Tu peux aussi les sélectionner au clavier.</p>
+        <div id="dragSource" class="drag-source">
+          <button draggable="true" class="drag-chip" data-shape="soleil" type="button" aria-label="Soleil">☀</button>
+          <button draggable="true" class="drag-chip" data-shape="lune" type="button" aria-label="Lune">◒</button>
+          <button draggable="true" class="drag-chip" data-shape="fleur" type="button" aria-label="Fleur">✿</button>
+        </div>
+        <div id="dropZone" class="drop-zone" tabindex="0"><span class="drop-prompt">Zone de dépôt</span><span id="dropCount">0</span></div>
+        <p id="dropFeedback" aria-live="polite">3 formes à déplacer.</p>
+      </section>
+
+      <section class="exercise" id="exercice-15">
+        <h2>15. Thème clair et thème sombre</h2>
+        <p id="themeLabel">Thème clair</p>
+        <button id="themeToggleCard" type="button" aria-label="Basculer le thème">Changer le thème</button>
+      </section>
+    </main>
+
+
+    <div class="modal-backdrop" id="modalBackdrop" hidden>
+      <section class="notification-modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle" aria-describedby="modalDescription">
+        <button id="closeModal" type="button" aria-label="Fermer">Fermer</button>
+        <h2 id="modalTitle">Notification</h2>
+        <p id="modalDescription">La fenêtre de notification est ouverte.</p>
+        <button id="modalOk" type="button">OK</button>
+      </section>
+    </div>
+  </body>
+</html>
